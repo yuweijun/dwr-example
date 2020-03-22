@@ -18,11 +18,26 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <servlet>
+    <display-name>User Servlet</display-name>
+    <servlet-name>user-invoker</servlet-name>
+    <servlet-class>com.example.dwr.servlet.UserServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>dwr-invoker</servlet-name>
     <url-pattern>/dwr/*</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>user-invoker</servlet-name>
+    <url-pattern>/user/*</url-pattern>
+  </servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

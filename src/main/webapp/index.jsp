@@ -17,7 +17,7 @@
         border: solid 1px;
     }
     input[type="button"] {
-        background-color: darkviolet;
+        background-color: beige;
     }
   </style>
 </head>
@@ -134,6 +134,5 @@ function hello8(){
         dwr.util.setValue("hello8Value", JSON.stringify(data));
     });
 }
-
 </script>
 </html>
