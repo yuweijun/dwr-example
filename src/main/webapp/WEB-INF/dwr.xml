@@ -8,9 +8,12 @@
   </init>
 
   <allow>
+    <filter class="com.example.dwr.filter.RequestLogFilter"/>
+
     <create creator="new" javascript="helloWorld">
-      <param name="class" value="com.example.dwr.controller.HelloWorld" />
+      <param name="class" value="com.example.dwr.controller.HelloWorld"/>
     </create>
+
     <convert converter="bean" match="com.example.dwr.vo.*"/>
     <convert converter="jackson" match="com.example.dwr.model.*"/>
 

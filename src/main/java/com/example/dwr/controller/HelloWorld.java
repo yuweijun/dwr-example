@@ -66,7 +66,7 @@ public class HelloWorld {
 
     User user = new User();
     user.setId(1);
-    user.setName("name");
+    // user.setName("name");
     user.setCreatedAt(new Date());
     List<User> users = new ArrayList<>();
     users.add(user);
