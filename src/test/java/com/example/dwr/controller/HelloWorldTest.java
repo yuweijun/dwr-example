@@ -1,5 +1,7 @@
 package com.example.dwr.controller;
 
+import com.example.dwr.converter.JacksonDWRConverter;
+import com.example.dwr.model.User;
 import com.example.dwr.vo.UserVO;
 import org.directwebremoting.ScriptBuffer;
 import org.directwebremoting.convert.ArrayConverter;
@@ -46,8 +48,8 @@ public class HelloWorldTest {
     };
 
     Replies replies = new Replies("batchId:0");
-    Reply reply1 = getReply(1, "name1");
-    Reply reply2 = getReply(2, "name2");
+    Reply reply1 = getUserVOReply(1, "name1");
+    Reply reply2 = getUserReply(2, "name2");
     replies.addReply(reply1);
     replies.addReply(reply2);
 
@@ -66,7 +68,7 @@ public class HelloWorldTest {
     }
   }
 
-  private Reply getReply(int id, String name) {
+  private Reply getUserVOReply(int id, String name) {
     UserVO userVO = new UserVO();
     userVO.setId(id);
     userVO.setName(name);
@@ -75,11 +77,23 @@ public class HelloWorldTest {
     return new Reply("" + id, userVO);
   }
 
+  private Reply getUserReply(int id, String name) {
+    User user = new User();
+    user.setId(id);
+    user.setName(name);
+    user.setCreatedAt(new Date());
+
+    return new Reply("" + id, user);
+  }
+
+
   private DefaultConverterManager getDefaultConverterManager() {
     DefaultConverterManager converterManager = new DefaultConverterManager();
     BeanConverter converter = new BeanConverter();
     converter.setConverterManager(converterManager);
+    JacksonDWRConverter jacksonDWRConverter = new JacksonDWRConverter();
     converterManager.addConverter(UserVO.class.getName(), converter);
+    converterManager.addConverter(User.class.getName(), jacksonDWRConverter);
 
     Converter dateConverter = new DateConverter();
     converterManager.addConverter("java.sql.Time", dateConverter);

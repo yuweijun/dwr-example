@@ -3,10 +3,27 @@
     "http://getahead.org/dwr/dwr20.dtd">
 
 <dwr>
+  <init>
+    <converter id="jackson" class="com.example.dwr.converter.JacksonDWRConverter"/>
+  </init>
+
   <allow>
     <create creator="new" javascript="helloWorld">
       <param name="class" value="com.example.dwr.controller.HelloWorld" />
     </create>
     <convert converter="bean" match="com.example.dwr.vo.*"/>
+    <convert converter="jackson" match="com.example.dwr.model.*"/>
+
+    <convert converter="collection" match="java.util.Collection"/>
+    <convert converter="map" match="java.util.Map"/>
+    <convert converter="array" match="[Z"/>
+    <convert converter="array" match="[B"/>
+    <convert converter="array" match="[S"/>
+    <convert converter="array" match="[I"/>
+    <convert converter="array" match="[J"/>
+    <convert converter="array" match="[F"/>
+    <convert converter="array" match="[D"/>
+    <convert converter="array" match="[C"/>
+    <convert converter="array" match="[L*"/>
   </allow>
 </dwr>
