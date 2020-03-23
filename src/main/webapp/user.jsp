@@ -38,6 +38,14 @@
     <td><input type="text" id="type" value="ADMIN"></td>
     <td id="typeValue"></td>
   </tr>
+  <tr>
+    <td><input type="button" value="get all TYPE" onclick="getAll();"></td>
+    <td>
+      <input type="radio" name="includeAdmin" id="includeAdmin1" value="1" checked><label for="includeAdmin1">YES</label>
+      <input type="radio" name="includeAdmin" id="includeAdmin2" value="0"><label for="includeAdmin2">NO</label>
+    </td>
+    <td id="allTypeValue"></td>
+  </tr>
 </table>
 </body>
 <script type="text/javascript">
@@ -55,6 +63,15 @@ function getType(){
     userController.getType(type, function(data) {
         console.log("getType callback", data);
         dwr.util.setValue("typeValue", data);
+    });
+}
+
+function getAll(){
+    var includeAdmin = document.querySelector('input[name="includeAdmin"]:checked').value;
+    console.log("includeAdmin : " + includeAdmin);
+    userController.getAll(includeAdmin == "1", function(data) {
+        console.log("includeAdmin callback", data);
+        dwr.util.setValue("allTypeValue", data);
     });
 }
 </script>

@@ -9,6 +9,8 @@ DWR-2.0.3 version example application
 3. http://localhost:8080/dwr-example/dwr/interface/helloWorld.js
 4. http://localhost:8080/dwr-example/user/interface/helloWorld.js
 5. http://localhost:8080/dwr-example/user/interface/userController.js
+6. http://localhost:8080/dwr-example/user.jsp
+7. http://localhost:8080/dwr-example/index.jsp
 
 # DWR-v3.0.2 official example
 
